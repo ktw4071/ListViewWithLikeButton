@@ -9,8 +9,8 @@ import android.widget.TextView;
 public class TARAValueObject {
     public String memberName;
      public Drawable memberImage;
-    public Drawable likeButton;
-    public Integer count = 0;
+    //public Drawable likeButton;
+    public int count;
 
     public TARAValueObject(String memberName, Drawable memberImage) {
         this.memberName = memberName;

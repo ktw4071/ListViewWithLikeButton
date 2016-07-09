@@ -80,14 +80,15 @@ public class MainActivity extends AppCompatActivity {
             super(context, 0, objects);
             currentContext = context;
         }
-        ViewHolder viewHolder;
+        //ViewHolder viewHolder;
         @Override
 
         public View getView(final int position, View convertView, ViewGroup parent) {
 
             final TARAValueObject valueObject = (TARAValueObject)getItem(position);
             final ViewHolder viewHolder;
-            View rootView;
+            //viewHolder.likeButtonWD = (ImageView)convertView.findViewById(R.id.like_Btn);
+            //View rootView;
             //convertView인자는 그려질 아이템의 root(보통)값을 의미한다. 아이템에 그려질
             //위젯이 하나라면 그 위젯의 객체가 될 수 있다.
             //안드로이드 시스템에 의해 convertView 객체는 계속 재사용될 수 있음을 명심하라
@@ -105,22 +106,23 @@ public class MainActivity extends AppCompatActivity {
             }
             viewHolder.memberImageWD.setImageDrawable(valueObject.memberImage);
             viewHolder.memberNameWD.setText(valueObject.memberName);
-            viewHolder.likeButtonWD.setImageDrawable(valueObject.likeButton);
-            viewHolder.countNumWD.setText(valueObject.count.toString());
+            viewHolder.likeButtonWD.setImageResource(R.drawable.like_button);
+            //viewHolder.countNumWD.setText(valueObject.count.toString());
 
             viewHolder.memberImageWD.setOnTouchListener(new View.OnTouchListener(){
                 public boolean onTouch(View v, MotionEvent event){
-                    Toast.makeText(currentContext, valueObject.memberName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(currentContext, valueObject.memberName + "을 선택", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             });
             viewHolder.likeButtonWD.setOnTouchListener(new View.OnTouchListener(){
                 public boolean onTouch(View v, MotionEvent event){
                     valueObject.count++;
-                    viewHolder.countNumWD.setText(valueObject.count.toString());
+                    viewHolder.countNumWD.setText(String.valueOf(valueObject.count));
                     return false;
                 }
             });
+
             //지금은 한행을 그릴 때 마다 새로운 위젯들을 생성하고 있음을 명심하세요.
 
             // 한 행이 그려질 root 레이아웃을 리턴해야 한다.
